@@ -8,7 +8,9 @@ __Floating window__ ![Window](./window.jpg)
 ## Usage
 
 1. Adjust [articulations.tsv](./articulations.tsv), this file should be in same (or above) folder as the amxd device.
-2. GUI overview ![](./usage.svg)
+2. GUI overview
+
+![](./usage.svg)
 
 ## Development
 

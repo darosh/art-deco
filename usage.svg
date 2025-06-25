@@ -25,8 +25,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="1.0824283"
-     inkscape:cx="420.35117"
-     inkscape:cy="285.93118"
+     inkscape:cx="440.67584"
+     inkscape:cy="367.22987"
      inkscape:window-width="1512"
      inkscape:window-height="922"
      inkscape:window-x="-1"
@@ -76,7 +76,7 @@
        d="m 112.16209,216.06159 v 80.32407"
        id="path3" /><path
        style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
-       d="M 420.21103,287.22364 H 91.000067"
+       d="M 447.00265,287.22364 H 91.000068"
        id="path4" /><path
        style="fill:#ffffff;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
        d="m 91.119616,275.46319 19.995124,11.52087 -20.256962,12.83006"
@@ -85,7 +85,7 @@
        d="m 152.25063,275.46319 -19.99512,11.52087 20.25696,12.83006"
        id="path6" /><text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
        x="158.83286"
        y="281.93198"
        id="text6"><tspan
@@ -93,7 +93,7 @@
          id="tspan6"
          x="158.83286"
          y="281.93198"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.6667px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start">Delay compensation</tspan></text><path
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:29.3333px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;text-anchor:start">Delay compensation</tspan></text><path
        style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
        d="M 647.10564,287.55231 417.82843,375.09776"
        id="path7" /><path
@@ -117,7 +117,7 @@
        id="path12"
        sodipodi:nodetypes="cccc" /><text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
        x="648.63904"
        y="281.93198"
        id="text12"><tspan
@@ -125,4 +125,4 @@
          id="tspan12"
          x="648.63904"
          y="281.93198"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:26.6667px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;text-anchor:middle">Keyswitches</tspan></text></g></svg>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:29.3333px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;text-anchor:middle">Keyswitches</tspan></text></g></svg>

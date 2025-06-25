@@ -2,8 +2,12 @@
 
 > Articulation delay compensation, a [Max for Live](https://www.ableton.com/en/live/max-for-live/) device for sampled instruments articulation keyswitch automation and delay compensation
 
-![](./device.jpg)
-![](./window.jpg)
+_Window_ ![Window](./window.jpg)
+_Device_ ![Device](./device.jpg)
+
+## Usage
+
+TBD
 
 ## Development
 

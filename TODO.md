@@ -1,5 +1,5 @@
 # TODO
 
-- add annotations
-- [ ] expr 1 - $i1 to ==0
-- do not use message as store, use int etc.
+- [x] add annotations
+- [x] expr 1 - $i1 to ==0
+- [x] do not use message as store, use int etc.

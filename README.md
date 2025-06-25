@@ -15,5 +15,4 @@
 
 ```bash
 git --no-pager diff "./Art Deco.amxd"
-
 ```

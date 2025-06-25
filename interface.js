@@ -144,28 +144,19 @@ function setArticulationByName (articulation) {
 
   // if (delay !== null && delay !== undefined) {
   //   currentDelayCompensation = delay
-    // post('Updated DELAY\n')
-    // outlet(DELAY, Math.abs(delay))
+  // post('Updated DELAY\n')
+  // outlet(DELAY, Math.abs(delay))
   // }
 
   // const keySwitch = getKeySwitch(articulation)
 
   // if (keySwitch !== null && keySwitch !== undefined) {
-    // post('Updated KEY_SWITCH\n')
-    // outlet(KEY_SWITCH, keySwitch)
+  // post('Updated KEY_SWITCH\n')
+  // outlet(KEY_SWITCH, keySwitch)
   // }
 }
 
-function readFile () {
-  var devicePath = this.patcher.filepath
-
-  if (devicePath === '') {
-    // post('Device path not found.\n')
-    return
-  }
-
-  var filePath = devicePath.replace(/\/[^/]+\.amxd$/, '') + '/articulations.tsv'
-
+function readFile (filePath) {
   // post('Reding file: ' + filePath + '\n')
 
   var f = new File(filePath, 'read')
@@ -180,6 +171,7 @@ function readFile () {
     f.close()
   } else {
     // post('Could not open file at: ' + filePath + '\n')
+    return false
   }
 
   return content
@@ -187,7 +179,25 @@ function readFile () {
 
 // Parse the TSV data
 function parseTSVData () {
-  var tsvData = readFile() || `\tLegato\tLong\tLong CS\tLong Flaut\tSpiccato\tStaccato\tPizzicato\tCol Legno\tTremolo\tTrill M2\tTrill m2\tLong Sul Tasto\tLong Harmonics\tShort Harmonics\tBartok\tLong Marcato\tMarcato\tTremolo Sul Pont\tTremolo CS\tLong Sul Pont\tSpiccato CS
+  var devicePath = this.patcher.filepath
+  var tsvData
+
+  if (!devicePath) {
+    // post('Device path not found.\n')
+  }
+
+  var filePath = devicePath?.replace(/\/[^/]+\.amxd$/, '') + '/articulations.tsv'
+
+  if (filePath) {
+    tsvData = readFile(filePath)
+
+    if (tsvData === false) {
+      filePath = devicePath?.replace(/\/[^/]+\.amxd$/, '').replace(/\/[^/]+$/, '') + '/articulations.tsv'
+      tsvData = readFile(filePath)
+    }
+  }
+
+  tsvData = tsvData || `\tLegato\tLong\tLong CS\tLong Flaut\tSpiccato\tStaccato\tPizzicato\tCol Legno\tTremolo\tTrill M2\tTrill m2\tLong Sul Tasto\tLong Harmonics\tShort Harmonics\tBartok\tLong Marcato\tMarcato\tTremolo Sul Pont\tTremolo CS\tLong Sul Pont\tSpiccato CS
 \tLegato\tLong\tLong\tLong\tShort\tShort\tShort\tTechnique\tOrnament\tOrnament\tOrnament\tTechnique\tTechnique\tTechnique\tShort\tLong\tShort\tOrnament\tOrnament\tTechnique\tShort
 Violins 1 Leader\t-70\t-100\t-90\t-120\t-30\t-50\t-20\t-50\t-40\t-40\t-40\t-140\t0\t0\t-20\tx\t-110\tx\tx\tx\tx
 Violins 1\t-80\t-100\t-90\t-120\t-50\t-50\t-40\t-50\t-30\t-30\t-30\t-100\t0\t0\t-60\t-100\tx\t-50\t-70\t-100\t-80

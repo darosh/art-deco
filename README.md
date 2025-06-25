@@ -9,7 +9,7 @@ __Device__ ![Device](./device.jpg)
 1. Adjust [articulations.tsv](./articulations.tsv), this file should be in same (or above) folder as the amxd device.
 2. GUI overview
 
-![](./usage-v4.svg)
+![](./usage-v5.svg)
 
 ## Development
 

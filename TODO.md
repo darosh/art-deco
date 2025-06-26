@@ -7,3 +7,4 @@
 - [ ] "Unable to add v8ui!" during freeze save
 - [ ] cleanup js
 - [ ] order by category?
+- [ ] color/icon articulations by category? 

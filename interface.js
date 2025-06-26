@@ -10,7 +10,7 @@ var restoreInstrument = 0
 var currentInstrument = ''
 var currentArticulation = ''
 var currentArticulations = []
-var currentDelayCompensation = 0
+// var currentDelayCompensation = 0
 
 var maxDelay = 0
 
@@ -35,7 +35,28 @@ const INSTRUMENT_NAME = outlet_cursor++
 function bang () {
   // post('Articulation controller loaded\n')
 
-  parseTSVData()
+  const dict = new Dict('shared_js_data')
+
+  if (dict.contains("instrumentNames")) {
+    // post('Reusing TSV\n')
+    instrumentNames = dict.get('instrumentNames')
+    articulationsData = dict.get('articulationsData')
+    maxDelay = dict.get('maxDelay')
+    // post('Reused instruments: ' + JSON.stringify(instrumentNames) + '\n')
+    // post('Reused data: ' + JSON.stringify(articulationsData) + '\n')
+
+  } else {
+    // post('Loading TSV\n')
+    const tsv = parseTSVData()
+    instrumentNames = tsv.instrumentNames
+    articulationsData = tsv.articulationsData
+    maxDelay = tsv.maxDelay
+    dict.set('instrumentNames', instrumentNames)
+    dict.set('articulationsData', articulationsData)
+    dict.set('maxDelay', maxDelay)
+    articulationsData = dict.get('articulationsData')
+  }
+
   updateInstrumentMenu()
 
   if (!currentInstrument) {
@@ -63,7 +84,7 @@ function setInstrument (instrument) {
     return
   }
 
-  if (!articulationsData[instrument]) {
+  if (!articulationsData.contains(instrument)) {
     restoreInstrument = instrument
     // post('Missing instrument: ' + instrument + '\n')
 
@@ -179,6 +200,10 @@ function readFile (filePath) {
 
 // Parse the TSV data
 function parseTSVData () {
+  const instrumentNames = []
+  const articulationsData = {}
+  let maxDelay = 0
+
   var devicePath = this.patcher.filepath
   var tsvData
 
@@ -231,6 +256,10 @@ Celli\t-120\t-120\t-120\t-120\t-40\t-60\t-50\t-60\t-20\t-40\t-20\t-120\t0\t0\t-5
       articulationsData[instrument] = {}
 
       for (var j = 0; j < current_articulations.length; j++) {
+        if (!current_articulations[j]) {
+          break
+        }
+
         const delay = (delays[j] === 'x' || delays[j] === 'xx') ? null : parseInt(delays[j])
         maxDelay = Math.max(Math.abs(delay || 0), maxDelay)
 
@@ -245,6 +274,12 @@ Celli\t-120\t-120\t-120\t-120\t-40\t-60\t-50\t-60\t-20\t-40\t-20\t-120\t0\t0\t-5
 
   // post('Parsed ' + instrumentsList.length + ' instruments\n')
   // post('Max delay: ' + maxDelay + '\n')
+
+  return {
+    maxDelay,
+    instrumentNames,
+    articulationsData
+  }
 }
 
 function getAvailableArticulations (instrument,
@@ -258,19 +293,21 @@ function getAvailableArticulations (instrument,
 
   const cats = [filterLegato, filterLong, filterShort, filterOrnament, filterTechnique]
 
-  if (articulationsData[instrument]) {
-    for (const art of Object.keys(articulationsData[instrument])) {
-      if (articulationsData[instrument][art] &&
-        cats.includes(articulationsData[instrument][art].category) &&
-        articulationsData[instrument][art].delay !== null) {
+  if (articulationsData.contains(instrument)) {
+    const ins = articulationsData.get(instrument)
+
+    for (const art of ins.getkeys()) {
+      if (ins.contains(art) &&
+        cats.includes(ins.get(art).get('category')) &&
+        ins.get(art).get('delay') !== null) {
         available.push(art)
       }
 
-      if (articulationsData[instrument][art] && (articulationsData[instrument][art].shiftKey)) {
+      if (ins.contains(art) && ins.get(art).get('shiftKey')) {
         articulationNames.push(null)
       }
 
-      if (articulationsData[instrument][art] && (articulationsData[instrument][art].delay !== null)) {
+      if (ins.contains(art) && (ins.get(art).get('delay') !== null)) {
         articulationNames.push(art)
       }
     }
@@ -287,8 +324,8 @@ function getAvailableArticulations (instrument,
 }
 
 function getDelayCompensation (instrument, articulation) {
-  if (articulationsData[instrument] && articulationsData[instrument][articulation]) {
-    return articulationsData[instrument][articulation].delay
+  if (articulationsData.contains(instrument) && articulationsData.get(instrument).contains(articulation)) {
+    return articulationsData.get(instrument).get(articulation).get('delay')
   }
 
   return null

@@ -26,3 +26,11 @@ git --no-pager diff "./Art Deco.amxd"
 ### Frozen testing
 
 Save device in gitignored `./frozen/` folder, it will read the articulations.tsv file from folder above automatically.
+
+### Summary
+
+Print articulation summary by category, for categorisation check. 
+
+```bash
+deno --allow-read summary.js
+```

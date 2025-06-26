@@ -5,3 +5,5 @@
 - [x] do not use message as store, use int etc.
 - [ ] latency based on filtered articulations?
 - [ ] "Unable to add v8ui!" during freeze save
+- [ ] cleanup js
+- [ ] order by category?

@@ -22,3 +22,7 @@ __Device__ ![Device](./device.jpg)
 ```bash
 git --no-pager diff "./Art Deco.amxd"
 ```
+
+### Frozen testing
+
+Save device in gitignored `./frozen/` folder, it will read the articulations.tsv file from folder above automatically.

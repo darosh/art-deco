@@ -7,7 +7,7 @@
 - [ ] "Unable to add v8ui!" during freeze save
 - [ ] cleanup js
 - [x] ~~order by category?~~
-- [ ] color/icon articulations by category? 
+- [x] color/icon articulations by category? 
 - [x] Staccatissimo Muted  Staccatissimo Mut
 - [x] Hotrods Hits Damped  Hotrods Hits Damp
 - [x] Long Rolls Hotrods   Long Rolls Hotrods

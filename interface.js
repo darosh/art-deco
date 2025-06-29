@@ -1,5 +1,3 @@
-const VERSION = 13
-
 var articulationsData = {}
 
 var instrumentNames = []
@@ -10,11 +8,11 @@ var restoreInstrument = 0
 var currentInstrument = ''
 var currentArticulation = ''
 var currentArticulations = []
-// var currentDelayCompensation = 0
+var currentCategories = []
 
 var maxDelay = 0
 
-outlets = 7
+outlets = 8
 
 let outlet_cursor = 0
 
@@ -25,8 +23,15 @@ const ARTICULATION_RANGE = outlet_cursor++
 const ARTICULATION_COUNT = outlet_cursor++
 const MAX_DELAY = outlet_cursor++
 const INSTRUMENT_NAME = outlet_cursor++
+const ARTICULATION_CATEGORIES = outlet_cursor++
 
-// post('interface.js version: ' + VERSION + '\n')
+const CATEGORIES = {
+  Legato: 'Play',
+  Long: 'Control On Variant',
+  Short: 'LCD Handle',
+  Ornament: 'Slider Range Value Variant 2',
+  Technique: 'Text / Icon On (Inactive)'
+}
 
 /**
  * PUBLIC
@@ -37,7 +42,7 @@ function bang () {
 
   const dict = new Dict('shared_js_data')
 
-  if (dict.contains("instrumentNames")) {
+  if (dict.contains('instrumentNames')) {
     // post('Reusing TSV\n')
     instrumentNames = dict.get('instrumentNames')
     articulationsData = dict.get('articulationsData')
@@ -125,12 +130,15 @@ function loadArticulations (instrument) {
   const filterOrnament = this.patcher.getnamed('Ornament').getvalueof() && 'Ornament'
   const filterTechnique = this.patcher.getnamed('Technique').getvalueof() && 'Technique'
 
-  currentArticulations = getAvailableArticulations(instrument,
+  const [a, c] = getAvailableArticulations(instrument,
     filterLegato,
     filterLong,
     filterShort,
     filterOrnament,
     filterTechnique)
+
+  currentArticulations = a
+  currentCategories = c
 
   updateArticulationMenu()
 }
@@ -143,12 +151,15 @@ function updateInstrumentMenu () {
 }
 
 function updateArticulationMenu () {
-  if (currentArticulations.length > 0) {
-    // post('Updated ARTICULATION_RANGE\n')
-    // post('Updated ARTICULATION_COUNT\n')
-    outlet(ARTICULATION_RANGE, ...currentArticulations)
-    outlet(ARTICULATION_COUNT, currentArticulations.length)
-  }
+  // if (currentArticulations.length > 0) {
+  const colors = currentCategories.map(cat => CATEGORIES[cat])
+  // post('Updated ARTICULATION_RANGE\n')
+  // post('Updated ARTICULATION_COUNT\n')
+  // post('Updated ARTICULATION_CATEGORIES: \n' + JSON.stringify(currentCategories) + '\n' + JSON.stringify(colors) + '\n')
+  outlet(ARTICULATION_CATEGORIES, ...colors)
+  outlet(ARTICULATION_RANGE, ...currentArticulations)
+  outlet(ARTICULATION_COUNT, currentArticulations.length)
+  // }
 }
 
 function setArticulationByName (articulation) {
@@ -289,6 +300,7 @@ function getAvailableArticulations (instrument,
                                     filterOrnament,
                                     filterTechnique) {
   const available = []
+  const categories = []
   articulationNames = []
 
   const cats = [filterLegato, filterLong, filterShort, filterOrnament, filterTechnique]
@@ -301,6 +313,7 @@ function getAvailableArticulations (instrument,
         cats.includes(ins.get(art).get('category')) &&
         ins.get(art).get('delay') !== null) {
         available.push(art)
+        categories.push(ins.get(art).get('category'))
       }
 
       if (ins.contains(art) && ins.get(art).get('shiftKey')) {
@@ -313,14 +326,14 @@ function getAvailableArticulations (instrument,
     }
   }
 
-  if (available.length === 1) {
-    available.push(available[0])
-  } else if (available.length === 0) {
-    available.push('N/A')
-    available.push('N/A')
-  }
+  // if (available.length === 1) {
+  //   available.push(available[0])
+  // } else if (available.length === 0) {
+  //   available.push('N/A')
+  //   available.push('N/A')
+  // }
 
-  return available
+  return [available, categories]
 }
 
 function getDelayCompensation (instrument, articulation) {

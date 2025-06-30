@@ -7,9 +7,13 @@
 - [ ] "Unable to add v8ui!" during freeze save
 - [x] cleanup js
 - [x] ~~order by category?~~
-- [x] color/icon articulations by category? 
-- [x] Staccatissimo Muted  Staccatissimo Mut
-- [x] Hotrods Hits Damped  Hotrods Hits Damp
-- [x] Long Rolls Hotrods   Long Rolls Hotrods
-- [x] Hits Super Damped    Hits Super Damped
-- [x] Bisbigliando Trem    Bisbigliando Trem
+- [x] color/icon articulations by category?
+- [x] Abbr.
+  - [x] Staccatissimo Muted  Staccatissimo Mut
+  - [x] Hotrods Hits Damped  Hotrods Hits Damp
+  - [x] Long Rolls Hotrods   Long Rolls Hotrods
+  - [x] Hits Super Damped    Hits Super Damped
+  - [x] Bisbigliando Trem    Bisbigliando Trem
+- [ ] colorized doc update
+- [ ] link to used delay sheet, doc attached articulations
+- [ ] remove debug js

@@ -2,14 +2,17 @@
 
 > Articulation delay compensation, a [Max for Live](https://www.ableton.com/en/live/max-for-live/) device for sampled instruments articulation keyswitch automation and delay compensation
 
-__Device__ ![Device](./device.jpg)
+![Device](./device.jpg)
 
 ## Usage
 
-1. Adjust [articulations.tsv](./articulations.tsv), this file should be in same (or above) folder as the amxd device.
+1. Configuration
+   - Customize the articulation list by modifying [articulations.tsv](./articulations.tsv).
+   - The `.TSV` (Tab Separated Values) format can be copied/pasted to and edited in Google Sheets, for example.
+   - Keep this file alongside your `.amxd` device file (same folder or one level up).
+   - Note: The current data is set up for BBC Symphony Orchestra users, sourced from [this spreadsheet](https://docs.google.com/spreadsheets/d/1WP9sobba7OkldNkTiSzXP7r3Pb64IzWQWrLkqdiyRcA/preview#gid=0).
 2. GUI overview
-
-![](./usage-v5.svg)
+![](./usage-v7.svg)
 
 ## Development
 

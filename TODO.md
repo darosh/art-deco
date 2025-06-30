@@ -14,7 +14,7 @@
   - [x] Long Rolls Hotrods   Long Rolls Hotrods
   - [x] Hits Super Damped    Hits Super Damped
   - [x] Bisbigliando Trem    Bisbigliando Trem
-- [ ] colorized doc update
-- [ ] link to used delay sheet, doc attached articulations
+- [x] colorized doc update
+- [x] link to used delay sheet, doc attached articulations
 - [ ] remove debug js
 - [ ] release

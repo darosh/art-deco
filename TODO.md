@@ -17,3 +17,4 @@
 - [ ] colorized doc update
 - [ ] link to used delay sheet, doc attached articulations
 - [ ] remove debug js
+- [ ] release

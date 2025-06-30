@@ -16,5 +16,5 @@
   - [x] Bisbigliando Trem    Bisbigliando Trem
 - [x] colorized doc update
 - [x] link to used delay sheet, doc attached articulations
-- [ ] remove debug js
+- [x] remove debug js
 - [ ] release

@@ -18,3 +18,4 @@
 - [x] link to used delay sheet, doc attached articulations
 - [x] remove debug js
 - [x] release
+- [x] reset empty track popup

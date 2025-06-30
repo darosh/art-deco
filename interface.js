@@ -70,29 +70,20 @@ function bang () {
       // post('Restoring instrument: ' + currentInstrument + '\n')
       outlet(INSTRUMENT_NAME, [restoreInstrument])
     }
-
-    // else {
-    //   currentInstrument = instrumentsList[0]
-    //   // post('Forcing first instrument: ' + currentInstrument + '\n')
-    // }
-
-    // loadArticulations(currentInstrument)
-    // setArticulation(0)
   }
+
   outlet(MAX_DELAY, [maxDelay])
 }
 
 function setInstrument (instrument) {
   if (instrument === 'N/A' || instrument === '_') {
     // post('Ignoring instrument: ' + instrument + '\n')
-
     return
   }
 
   if (!articulationsData.contains(instrument)) {
     restoreInstrument = instrument
     // post('Missing instrument: ' + instrument + '\n')
-
     return
   }
 
@@ -151,7 +142,6 @@ function updateInstrumentMenu () {
 }
 
 function updateArticulationMenu () {
-  // if (currentArticulations.length > 0) {
   const colors = currentCategories.map(cat => CATEGORIES[cat])
   // post('Updated ARTICULATION_RANGE\n')
   // post('Updated ARTICULATION_COUNT\n')
@@ -159,7 +149,6 @@ function updateArticulationMenu () {
   outlet(ARTICULATION_CATEGORIES, ...colors)
   outlet(ARTICULATION_RANGE, ...currentArticulations)
   outlet(ARTICULATION_COUNT, currentArticulations.length)
-  // }
 }
 
 function setArticulationByName (articulation) {
@@ -168,24 +157,8 @@ function setArticulationByName (articulation) {
 
   if (!currentInstrument) {
     // post('Warning: No instrument selected\n')
-
     return
   }
-
-  // const delay = getDelayCompensation(currentInstrument, articulation)
-
-  // if (delay !== null && delay !== undefined) {
-  //   currentDelayCompensation = delay
-  // post('Updated DELAY\n')
-  // outlet(DELAY, Math.abs(delay))
-  // }
-
-  // const keySwitch = getKeySwitch(articulation)
-
-  // if (keySwitch !== null && keySwitch !== undefined) {
-  // post('Updated KEY_SWITCH\n')
-  // outlet(KEY_SWITCH, keySwitch)
-  // }
 }
 
 function readFile (filePath) {
@@ -235,14 +208,8 @@ function parseTSVData () {
 
   tsvData = tsvData || `\tLegato\tLong\tLong CS\tLong Flaut\tSpiccato\tStaccato\tPizzicato\tCol Legno\tTremolo\tTrill M2\tTrill m2\tLong Sul Tasto\tLong Harmonics\tShort Harmonics\tBartok\tLong Marcato\tMarcato\tTremolo Sul Pont\tTremolo CS\tLong Sul Pont\tSpiccato CS
 \tLegato\tLong\tLong\tLong\tShort\tShort\tShort\tTechnique\tOrnament\tOrnament\tOrnament\tTechnique\tTechnique\tTechnique\tShort\tLong\tShort\tOrnament\tOrnament\tTechnique\tShort
-Violins 1 Leader\t-70\t-100\t-90\t-120\t-30\t-50\t-20\t-50\t-40\t-40\t-40\t-140\t0\t0\t-20\tx\t-110\tx\tx\tx\tx
-Violins 1\t-80\t-100\t-90\t-120\t-50\t-50\t-40\t-50\t-30\t-30\t-30\t-100\t0\t0\t-60\t-100\tx\t-50\t-70\t-100\t-80
-Violins 2 Leader\t-80\t-80\t-90\t-120\t-20\t-50\t-20\t-30\t-40\t-40\t-20\t-100\t0\t0\t-20\tx\t-80\tx\tx\tx\tx
-Violins 2\t-120\t-100\t-100\t-120\t-30\t-50\t-40\t-40\t-40\t-30\t-30\t-100\t0\t0\t-40\t-80\tx\t-40\t-50\t-120\t-60
-Violas Leader\t-80\t-80\t-90\t-120\t-30\t-50\t-30\t-50\t-40\t-20\t-30\t-100\t0\t0\t-40\tx\t-80\tx\tx\tx\tx
-Violas\t-120\t-100\t-80\t-120\t-30\t-40\t-30\t-30\t-20\t-30\t-40\t-100\t0\t0\t-40\t-80\tx\t-30\t-40\t-120\t-70
-Celli Leader\t-120\t-120\t-120\t-120\t-70\t-70\t-30\t-30\t-20\t-40\t-40\t-130\t0\t0\t-30\tx\t-90\tx\tx\tx\tx
-Celli\t-120\t-120\t-120\t-120\t-40\t-60\t-50\t-60\t-20\t-40\t-20\t-120\t0\t0\t-50\t-100\tx\t-30\t-30\t-120\t-70`
+Example 1\t-70\t-100\t-90\t-120\t-30\t-50\t-20\t-50\t-40\t-40\t-40\t-140\t0\t0\t-20\tx\t-110\tx\tx\tx\tx
+Example 2\t-80\t-100\t-90\t-120\t-50\t-50\t-40\t-50\t-30\t-30\t-30\t-100\t0\t0\t-60\t-100\tx\t-50\t-70\t-100\t-80`
 
   var lines = tsvData.split('\n')
   let current_articulations = null
@@ -325,13 +292,6 @@ function getAvailableArticulations (instrument,
       }
     }
   }
-
-  // if (available.length === 1) {
-  //   available.push(available[0])
-  // } else if (available.length === 0) {
-  //   available.push('N/A')
-  //   available.push('N/A')
-  // }
 
   return [available, categories]
 }

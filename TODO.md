@@ -5,7 +5,7 @@
 - [x] do not use message as store, use int etc.
 - [x] ~~latency based on filtered articulations?~~
 - [ ] "Unable to add v8ui!" during freeze save
-- [ ] cleanup js
+- [x] cleanup js
 - [x] ~~order by category?~~
 - [x] color/icon articulations by category? 
 - [x] Staccatissimo Muted  Staccatissimo Mut

@@ -51,17 +51,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-569",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 270.0, 825.0, 32.0, 22.0 ],
-					"text" : "print"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -9378,16 +9367,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-569", 0 ],
-					"order" : 1,
-					"source" : [ "obj-578", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-579", 0 ],
-					"order" : 0,
 					"source" : [ "obj-578", 0 ]
 				}
 

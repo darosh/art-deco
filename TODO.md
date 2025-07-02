@@ -22,4 +22,5 @@
 - [x] save edited delays
 - [x] fix popup on empty track not empty
 - [x] check multiple libraries
+- [ ] update overview screenshot
 - [ ] support multiple libraries

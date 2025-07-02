@@ -1,0 +1,78 @@
+		Shorts Master	Play Runs + Legato	Playable Runs
+		Short	Legato	Short
+5: High Strings	x24	-15	0	0
+
+		Shorts Master	Play Runs + Legato	Playable Runs
+		Short	Legato	Short
+5: Low Strings	x96	-15	0	0
+
+		Shorts Master
+		Short
+5: String Orchestra	x97	-15
+
+		Sustains Pad	Sus Swell	Stabs Long	Stabs Short Cluster	Rips Up	Rips Down	Play Runs + Legato	Playable Runs	Chords M	Chords m	Chords Open	Glissando FX	Shepard Tones
+		Long	Long	Long	Short	Technique	Technique	Legato	Short	Long	Long	Short	Technique	Technique
+5: High Strings Large	x107	-40	0	0	0	0	0	0	0	0	0	0	0	0
+
+		Sustains + Legato	Sustains	Sustains Pad	Sus Swell Long	Sus Swell Short	Stabs Long	Rips Up	Rips Down	Play Runs + Legato	Playable Runs	Crescendo Long	Crescendo Medium	Crescendo Short	Glissando FX	Shepard Tones
+		Legato	Long	Long	Long	Short	Long	Technique	Technique	Legato	Short	Long	Long	Short	Technique	Technique
+5: Low Strings Large + Winds	x96	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+
+		Sustains Pad	Sus Swell	Stabs Long	Stabs Short Cluster	Rips Up	Rips Down	Glissando FX
+		Long	Long	Long	Short	Technique	Technique	Technique
+5: String Orchestra Large + Winds	x97	0	0	0	0	0	0	0
+
+		Shorts Master	Play Runs + Legato	Playable Runs
+		Short	Legato	Short
+5: String Quartet	x24	0	0	0
+
+		Marcato Fanfare	Staccato Fanfare	Rips Up	Rips Down	Rips Gliss Up	Rips Gliss Down	Play Runs + Legato	Playable Runs
+		Technique	Technique	Technique	Technique	Technique	Technique	Legato	Short
+5: Trumpet Ensemble	x24	-20	-20	0	0	0	0	0	0
+
+		Sustains + Legato	Sustains	Sustains Pad	Sustains Swells
+		Legato	Long	Long	Long
+5: Fluegelhorn Ensemble	x24	-170	-110	-110	-110
+
+		Marcato Fanfare	Staccato Fanfare	Rips Up	Rips Down	Play Runs + Legato	Playable Runs	Crescendo Long	Crescendo Medium	Crescendo Short	Shepard Tones
+		Technique	Technique	Technique	Technique	Legato	Short	Long	Long	Short	Technique
+5: Low Brass	x96	-20	-20	0	0	0	0	0	0	0	0
+
+		Sustains + Legato	Sustains	Sustains Pad	Sustains Swells
+		Legato	Long	Long	Long
+5: Low Brass Mellow	x96	-140	0	0	0
+
+		Marcato Fanfare	Staccato Fanfare	Rips Up	Rips Down
+		Technique	Technique	Technique	Technique
+5: Brass Ensemble	x96	0	0	0	0
+
+		Sustains	Sustains Pad	Sustains Swells
+		Long	Long	Long
+5: Brass Ensemble Mellow	x96	0	0	0
+
+		Marcato Fanfare	Staccato Fanfare	Rips Up	Rips Down	Rips Gliss Up	Rips Gliss Down	Play Runs + Leg	Play Runs	Cress Long	Cress Medium	Cress Short	Chords M	Chords m	Chords Open
+		Short	Short	Technique	Technique	Technique	Technique	Legato	Short	Long	Long	Short	Long	Long	Long
+5: High Woodwinds	x24	-20	-5	0	0	0	0	0	0	0	0	0	0	0	0
+
+		Sustains + Leg	Sustains	Stabs Long	Stabs Short Clust	Marcato Fanfare	Staccato Fanfare	Rips Up	Rips Down	Rips Gliss Up	Rips Gliss Down	Play Runs + Leg	Play Runs	Cress Long	Cress Medium	Cress Short
+		Legato	Long	Long	Short	Short	Short	Technique	Technique	Technique	Technique	Legato	Short	Long	Long	Short
+5: Low Woodwinds	x96	-150	0	0	0	-20	-15	0	0	0	0	0	0	0	0	0
+
+		Marcato Fanfare	Staccato Fanfare	Rips Up	Rips Down	Rips Gliss Up	Rips Gliss Down	Cress Long	Cress Medium	Cress Short
+		Short	Short	Technique	Technique	Technique	Technique	Long	Long	Short
+5: Woodwinds Ensemble	x24	-15	-15	0	0	0	0	0	0	0
+
+		Sustains + Legato	Sustains	Sustains Pad	Sus Swell Long	Sus Swell Short	Rips Up	Rips Down	Cress Long	Cress Medium	Cress Short	Glissando FX	Shepard Tones
+		Legato	Long	Long	Long	Short	Technique	Technique	Long	Long	Short	Technique	Technique
+5: Female Choir	x24	-140	-20	-40	-20	-20	0	0	0	0	0	0	0
+5: Male Choir	x24	-140	-40	-40	-40	-40	0	0	0	0	0	0	0
+5: Mixed Choir	x24	x	-20	-20	-20	-20	0	0	0	0	0	0	0
+
+		Sustains	Marcato Long	Marcato Short	Upbeats	Staccato
+		Long	Long	Short	Technique	Short
+0: Tutti Orchestra	x24	-50	-70	-70	0	-70
+
+		Chords Sus M	Chords Sus m	Chords Stac M	Chords Stac m	Ch Swells Long M	Ch Swells Long m	Ch Swells Short M	Ch Swells Short m	Single Arps M	Single Arps m	Trills M	Trills m	Octave Runs M	Octave Runs m		Swells Long	Swells Short
+		Long	Long	Short	Short	Long	Long	Short	Short	Technique	Technique	Ornament	Ornament	Technique	Technique		Long	Short
+0: High Orchestra	x24	-80	-80	-80	-80	0	0	0	0	0	0	0	0	0	0	x	x	x
+0: Low Orchestra	x24	-80	-80	-80	-80	0	0	0	0	0	0	x	x	0	0	x48	0	0

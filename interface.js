@@ -213,6 +213,15 @@ function saveFile (filePath, lines) {
   const f = new File(filePath, 'write')
 
   if (f.isopen) {
+    f.position = 0
+
+    // writing empty lines to erase leftovers from previous version, it's weird
+    for (const l of lines) {
+      f.writestring(' '.repeat(l.length * 2))
+    }
+    
+    f.position = 0
+    
     for (const l of lines) {
       f.writeline(l)
     }

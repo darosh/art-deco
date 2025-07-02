@@ -25,3 +25,6 @@
 - [ ] update disabled border for: save, key, track
 - [ ] support multiple libraries
 - [ ] update overview and device screenshot
+- [x] fix file saving
+- [ ] make fncs private foo.local = 1
+- [ ] restore all tabs on save

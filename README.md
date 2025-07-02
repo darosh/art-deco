@@ -17,8 +17,9 @@
 3. Use `No key` to disable keyswitch sending.
 4. `Play/Stop` buttons bypass delay compensation for real-time performance.
 5. Filter articulations by category (`Legato`, `Long`, `Short`, `Ornament`, `Technique`) to streamline selection in articulation-per-track setups.
-6. Override delay compensation temporarily using the `Delay` field for fine-tuning. Click the `Save` button to make these temporary changes permanent in `articulations.tsv`.
-7. GUI overview
+6. Automate the `Articulation` value using automation or clip envelope.
+7. Override delay compensation temporarily using the `Delay` field for fine-tuning. Click the `Save` button to make these temporary changes permanent in `articulations.tsv`.
+8. GUI overview
 ![](./usage-v7.svg)
 
 ## Development

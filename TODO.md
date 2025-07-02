@@ -19,3 +19,7 @@
 - [x] remove debug js
 - [x] release
 - [x] reset empty track popup
+- [x] save edited delays
+- [x] fix popup on empty track not empty
+- [x] check multiple libraries
+- [ ] support multiple libraries

@@ -1,16 +1,17 @@
-var articulationsData = {}
+let articulationsData = {}
 
-var instrumentNames = []
-var articulationNames = []
+let instrumentNames = []
+let instrumentTables = []
+let articulationNames = []
 
-var restoreInstrument = 0
+let restoreInstrument = 0
 
-var currentInstrument = ''
-var currentArticulation = ''
-var currentArticulations = []
-var currentCategories = []
+let currentInstrument = ''
+let currentArticulation = ''
+let currentArticulations = []
+let currentCategories = []
 
-var maxDelay = 0
+let maxDelay = 0
 
 outlets = 8
 
@@ -37,16 +38,17 @@ const CATEGORIES = {
  * PUBLIC
  */
 
-function bang () {
+function bang (reload) {
   // post('Articulation controller loaded\n')
 
   const dict = new Dict('shared_js_data')
 
-  if (dict.contains('instrumentNames')) {
+  if (dict.contains('instrumentNames') && !reload) {
     // post('Reusing TSV\n')
     instrumentNames = dict.get('instrumentNames')
     articulationsData = dict.get('articulationsData')
     maxDelay = dict.get('maxDelay')
+    instrumentTables = dict.get('instrumentTables')
     // post('Reused instruments: ' + JSON.stringify(instrumentNames) + '\n')
     // post('Reused data: ' + JSON.stringify(articulationsData) + '\n')
 
@@ -59,7 +61,9 @@ function bang () {
     dict.set('instrumentNames', instrumentNames)
     dict.set('articulationsData', articulationsData)
     dict.set('maxDelay', maxDelay)
+    dict.set('instrumentTables', tsv.instrumentTables)
     articulationsData = dict.get('articulationsData')
+    instrumentTables = dict.get('instrumentTables')
   }
 
   updateInstrumentMenu()
@@ -70,6 +74,10 @@ function bang () {
       // post('Restoring instrument: ' + currentInstrument + '\n')
       outlet(INSTRUMENT_NAME, [restoreInstrument])
     }
+  }
+
+  if (reload && currentArticulations) {
+    outlet(DELAY, currentArticulations.map(a => Math.abs(getDelayCompensation(currentInstrument, a))))
   }
 
   outlet(MAX_DELAY, [maxDelay])
@@ -105,7 +113,47 @@ function setArticulation (articulationIndex) {
 function reload () {
   instrumentNames = []
   articulationsData = []
-  bang()
+  bang(true)
+}
+
+function delayEdit (value) {
+  articulationsData.replace(`${currentInstrument}::${currentArticulation}::delay`, Math.round(-value))
+}
+
+function delaySave () {
+  // post('delaySave' + '\n')
+  const lines = []
+  let index = 0
+
+  for (const table of instrumentTables) {
+    if (index > 0) {
+      lines.push('')
+    }
+
+    lines.push('\t' + articulationsData.get(table[0]).getkeys().map(x => x.startsWith('#') ? '' : x).join('\t'))
+    lines.push('\t' + articulationsData.get(table[0]).getkeys().map(k => articulationsData.get(table[0]).get(k).get('category')).join('\t'))
+
+    for (const ins of table) {
+      const delays = articulationsData.get(ins).getkeys().map(k => {
+        const o = articulationsData.get(ins).get(k)
+        const d = o.get('delay')
+        const s = o.get('shiftKey')
+
+        return s ? ('x' + s) : d === null ? 'x' : d
+      })
+
+      lines.push(ins + '\t' + delays.join('\t'))
+    }
+
+    index++
+  }
+
+  // post(lines.join('\n'))
+
+  const devicePath = this.patcher.filepath
+  const filePath = devicePath?.replace(/\/[^/]+\.amxd$/, '') + '/articulations.tsv'
+
+  saveFile(filePath, lines)
 }
 
 /**
@@ -161,16 +209,12 @@ function setArticulationByName (articulation) {
   }
 }
 
-function readFile (filePath) {
-  // post('Reding file: ' + filePath + '\n')
-
-  var f = new File(filePath, 'read')
+function saveFile (filePath, lines) {
+  const f = new File(filePath, 'write')
 
   if (f.isopen) {
-    var content = ''
-
-    while (f.position < f.eof) {
-      content += f.readstring(1024) // Read in chunks
+    for (const l of lines) {
+      f.writeline(l)
     }
 
     f.close()
@@ -178,24 +222,43 @@ function readFile (filePath) {
     // post('Could not open file at: ' + filePath + '\n')
     return false
   }
+}
 
-  return content
+function readFile (filePath) {
+  // post('Reading file: ' + filePath + '\n')
+
+  const f = new File(filePath, 'read')
+
+  if (f.isopen) {
+    let content = ''
+
+    while (f.position < f.eof) {
+      content += f.readstring(1024) // Read in chunks
+    }
+
+    f.close()
+    return content
+  } else {
+    // post('Could not open file at: ' + filePath + '\n')
+    return false
+  }
 }
 
 // Parse the TSV data
 function parseTSVData () {
   const instrumentNames = []
   const articulationsData = {}
+  const instrumentTables = []
   let maxDelay = 0
 
-  var devicePath = this.patcher.filepath
-  var tsvData
+  const devicePath = this.patcher.filepath
+  let tsvData
 
   if (!devicePath) {
     // post('Device path not found.\n')
   }
 
-  var filePath = devicePath?.replace(/\/[^/]+\.amxd$/, '') + '/articulations.tsv'
+  let filePath = devicePath?.replace(/\/[^/]+\.amxd$/, '') + '/articulations.tsv'
 
   if (filePath) {
     tsvData = readFile(filePath)
@@ -211,11 +274,12 @@ function parseTSVData () {
 Example 1\t-70\t-100\t-90\t-120\t-30\t-50\t-20\t-50\t-40\t-40\t-40\t-140\t0\t0\t-20\tx\t-110\tx\tx\tx\tx
 Example 2\t-80\t-100\t-90\t-120\t-50\t-50\t-40\t-50\t-30\t-30\t-30\t-100\t0\t0\t-60\t-100\tx\t-50\t-70\t-100\t-80`
 
-  var lines = tsvData.split('\n')
+  const lines = tsvData.split('\n')
   let current_articulations = null
   let current_categories = null
+  let current_table = 0
 
-  for (var cursor = 0; cursor < lines.length; cursor++) {
+  for (let cursor = 0; cursor < lines.length; cursor++) {
     const line = lines[cursor]
 
     if (!lines[cursor].trim()) {
@@ -223,40 +287,55 @@ Example 2\t-80\t-100\t-90\t-120\t-50\t-50\t-40\t-50\t-30\t-30\t-30\t-100\t0\t0\t
       current_categories = null
     } else if (!current_articulations) {
       current_articulations = line.split('\t').slice(1)
+      current_table++
     } else if (!current_categories) {
       current_categories = line.split('\t').slice(1)
     } else {
-      var cells = line.split('\t')
-      var instrument = cells[0]
-      var delays = cells.slice(1)
+      const cells = line.split('\t')
+      const instrument = cells[0]
+      const delays = cells.slice(1)
 
       instrumentNames.push(instrument)
       articulationsData[instrument] = {}
 
-      for (var j = 0; j < current_articulations.length; j++) {
-        if (!current_articulations[j]) {
+      instrumentTables[current_table - 1] = instrumentTables[current_table - 1] || []
+      instrumentTables[current_table - 1].push(instrument)
+
+      for (let j = 0; j < current_articulations.length; j++) {
+        if (!current_articulations[j] && !current_articulations[j + 1]) {
           break
         }
 
-        const delay = (delays[j] === 'x' || delays[j] === 'xx') ? null : parseInt(delays[j])
+        const delay = (delays[j] === 'x' || delays[j] === 'xx' || ((typeof delays[j] === 'string') && (delays[j][0] === 'x')))
+          ? null
+          : parseInt(delays[j])
+
         maxDelay = Math.max(Math.abs(delay || 0), maxDelay)
 
-        articulationsData[instrument][current_articulations[j]] = {
+        const shiftKey = /x\d+/.test(delays[j])
+          ? Number.parseInt(delays[j].slice(1))
+          : (delays[j] === 'xx') ? 1 : 0
+
+        const articulation = current_articulations[j] || ('#' + j)
+
+        articulationsData[instrument][articulation] = {
           delay,
           category: current_categories[j],
-          shiftKey: delays[j] === 'xx'
+          shiftKey
         }
       }
     }
   }
 
+  // post('Parsed ' + JSON.stringify(articulationsData, null, 2) + '\n')
   // post('Parsed ' + instrumentsList.length + ' instruments\n')
   // post('Max delay: ' + maxDelay + '\n')
 
   return {
     maxDelay,
     instrumentNames,
-    articulationsData
+    articulationsData,
+    instrumentTables
   }
 }
 
@@ -284,7 +363,9 @@ function getAvailableArticulations (instrument,
       }
 
       if (ins.contains(art) && ins.get(art).get('shiftKey')) {
-        articulationNames.push(null)
+        for (let i = 0; i < ins.get(art).get('shiftKey'); i++) {
+          articulationNames.push(null)
+        }
       }
 
       if (ins.contains(art) && (ins.get(art).get('delay') !== null)) {

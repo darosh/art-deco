@@ -1,47 +1,47 @@
 		Legato	Sustained	Spiccato	Pizzicato	Tremolo
 		Legato	Long	Short	Short	Ornament
 Violins	x12	-125	-125	-125	-125	-125
-
-	Sustained	Spiccato	Pizzicato	Tremolo
-	Long	Short	Short	Ornament
-Violas	-125	-125	-125	-125
-
-	Legato	Sustained	Spiccato	Pizzicato	Tremolo
-	Legato	Long	Short	Short	Ornament
-Celli	-125	-125	-125	-125	-125
-
-	Sustained	Spiccato	Pizzicato	Tremolo
-	Long	Short	Short	Ornament
-Double Basses	-125	-125	-125	-125
-Violins + Violas	-125	-125	-125	-125
-Celli + Basses	-125	-125	-125	-125
-String Ensemble	-125	-125	-125	-125
-
-		Legato	Sustained	Staccatissimo
-		Legato	Long	Short
-Trumpets	x12	-125	-125	-125
-French Horns	x12	-125	-125	-125
-Trombones	x12	x	-125	-125
-Tubas	x12	x	-125	-125
-Low Brass	x12	x	-125	-125
-Trumpets + French Horns	x12	-125	-125	-125
-Trombones + Tubas	x12	x	-125	-125
-Brass Ensemble	x12	x	-125	-125
-
-		Sustained	Staccatissimo	Trill Half	Trill Whole
-		Long	Short	Ornament	Ornament
-Flutes	x12	-125	-125	-125	-125
-Oboes	x12	-125	-125	-125	-125
-Clarinets	x12	-125	-125	-125	-125
-Bassoons	x12	-125	-125	-125	-125
-Flutes + Clarinets	x12	-125	-125	-125	-125
-Clarinets + Bassoons	x12	-125	-125	-125	-125
-Woodwinds Ensemble	x12	-125	-125	-125	-125
-
-		Sustained Aah	Sustained Ooh	Staccatiss Phrases
-		Long	Long	Short
-Sopranos	x12	-125	-125	-125
-Altos	x12	-125	-125	-125
-Tenors	x12	-125	-125	-125
-Basses	x12	-125	-125	-125
-Choir Ensemble	x12	-125	-125	-125
+						
+	Sustained	Spiccato	Pizzicato	Tremolo		
+	Long	Short	Short	Ornament		
+Violas	-125	-125	-125	-125		
+						
+	Legato	Sustained	Spiccato	Pizzicato	Tremolo	
+	Legato	Long	Short	Short	Ornament	
+Celli	-125	-125	-125	-125	-125	
+						
+	Sustained	Spiccato	Pizzicato	Tremolo		
+	Long	Short	Short	Ornament		
+Double Basses	-125	-125	-125	-125		
+Violins + Violas	-125	-125	-125	-125		
+Celli + Basses	-125	-125	-125	-125		
+String Ensemble	-125	-125	-125	-125		
+						
+		Legato	Sustained	Staccatissimo		
+		Legato	Long	Short		
+Trumpets	x12	-125	-125	-125		
+French Horns	x12	-125	-125	-125		
+Trombones	x12	x	-125	-125		
+Tubas	x12	x	-125	-125		
+Low Brass	x12	x	-125	-125		
+Trumpets + French Horns	x12	-125	-125	-125		
+Trombones + Tubas	x12	x	-125	-125		
+Brass Ensemble	x12	x	-125	-125		
+						
+		Sustained	Staccatissimo	Trill Half	Trill Whole	
+		Long	Short	Ornament	Ornament	
+Flutes	x12	-125	-125	-125	-125	
+Oboes	x12	-125	-125	-125	-125	
+Clarinets	x12	-125	-125	-125	-125	
+Bassoons	x12	-125	-125	-125	-125	
+Flutes + Clarinets	x12	-125	-125	-125	-125	
+Clarinets + Bassoons	x12	-125	-125	-125	-125	
+Woodwinds Ensemble	x12	-125	-125	-125	-125	
+						
+		Sustained Aah	Sustained Ooh	Staccatiss Phrases		
+		Long	Long	Short		
+Sopranos	x12	-125	-125	-125		
+Altos	x12	-125	-125	-125		
+Tenors	x12	-125	-125	-125		
+Basses	x12	-125	-125	-125		
+Choir Ensemble	x12	-125	-125	-125		

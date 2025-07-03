@@ -41,29 +41,31 @@ const CATEGORIES = {
 function bang (reload) {
   // post('Articulation controller loaded\n')
 
+  const devicePath = this.patcher.filepath.replaceAll(/[:\/ .]/g, '_')
   const dict = new Dict('shared_js_data')
 
-  if (dict.contains('instrumentNames') && !reload) {
+  // post(dict.stringify() + '\n')
+
+  if (dict.contains(devicePath + 'instrumentNames') && !reload) {
     // post('Reusing TSV\n')
-    instrumentNames = dict.get('instrumentNames')
-    articulationsData = dict.get('articulationsData')
-    maxDelay = dict.get('maxDelay')
-    instrumentTables = dict.get('instrumentTables')
+    instrumentNames = dict.get(devicePath + 'instrumentNames')
+    articulationsData = dict.get(devicePath + 'articulationsData')
+    maxDelay = dict.get(devicePath + 'maxDelay')
+    instrumentTables = dict.get(devicePath + 'instrumentTables')
     // post('Reused instruments: ' + JSON.stringify(instrumentNames) + '\n')
     // post('Reused data: ' + JSON.stringify(articulationsData) + '\n')
-
   } else {
     // post('Loading TSV\n')
     const tsv = parseTSVData()
     instrumentNames = tsv.instrumentNames
     articulationsData = tsv.articulationsData
     maxDelay = tsv.maxDelay
-    dict.set('instrumentNames', instrumentNames)
-    dict.set('articulationsData', articulationsData)
-    dict.set('maxDelay', maxDelay)
-    dict.set('instrumentTables', tsv.instrumentTables)
-    articulationsData = dict.get('articulationsData')
-    instrumentTables = dict.get('instrumentTables')
+    dict.set(devicePath + 'instrumentNames', instrumentNames)
+    dict.set(devicePath + 'articulationsData', articulationsData)
+    dict.set(devicePath + 'maxDelay', maxDelay)
+    dict.set(devicePath + 'instrumentTables', tsv.instrumentTables)
+    articulationsData = dict.get(devicePath + 'articulationsData')
+    instrumentTables = dict.get(devicePath + 'instrumentTables')
   }
 
   updateInstrumentMenu()

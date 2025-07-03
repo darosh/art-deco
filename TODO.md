@@ -22,9 +22,9 @@
 - [x] save edited delays
 - [x] fix popup on empty track not empty
 - [x] check multiple libraries
-- [x] ~~update disabled border for: save, key, track~~
-- [ ] support multiple libraries
-- [ ] update overview and device screenshot
+- [x] support multiple libraries
 - [x] fix file saving
 - [x] make fncs private foo.local = 1
 - [x] restore all tabs on save
+- [x] ~~update disabled border for: save, key, track~~
+- [ ] update overview and device screenshot

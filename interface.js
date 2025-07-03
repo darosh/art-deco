@@ -125,14 +125,22 @@ function delaySave () {
   const lines = []
   let index = 0
 
+  const cols = Math.max(...instrumentTables.map(t => articulationsData.get(t[0]).getkeys().length))
+  
   for (const table of instrumentTables) {
-    if (index > 0) {
-      lines.push('')
+    if ((index > 0) && (index !== instrumentTables.length)) {
+      lines.push('\t'.repeat(cols))
     }
 
-    lines.push('\t' + articulationsData.get(table[0]).getkeys().map(x => x.startsWith('#') ? '' : x).join('\t'))
-    lines.push('\t' + articulationsData.get(table[0]).getkeys().map(k => articulationsData.get(table[0]).get(k).get('category')).join('\t'))
-
+    const keys = articulationsData.get(table[0]).getkeys()
+    const count = keys.length
+    const pad = cols > count
+      ? '\t'.repeat(cols - count)
+      : ''
+    
+    lines.push('\t' + keys.map(x => x.startsWith('#') ? '' : x).join('\t') + pad)
+    lines.push('\t' + keys.map(k => articulationsData.get(table[0]).get(k).get('category')).join('\t') + pad)
+    
     for (const ins of table) {
       const delays = articulationsData.get(ins).getkeys().map(k => {
         const o = articulationsData.get(ins).get(k)
@@ -142,7 +150,12 @@ function delaySave () {
         return s ? ('x' + s) : d === null ? 'x' : d
       })
 
-      lines.push(ins + '\t' + delays.join('\t'))
+      // const count = articulationsData.get(ins).getkeys().length
+      // const pad = cols > count
+      //   ? '\t'.repeat(cols - count)
+      //   : ''
+
+      lines.push(ins + '\t' + delays.join('\t') + pad)
     }
 
     index++
@@ -219,9 +232,9 @@ function saveFile (filePath, lines) {
     for (const l of lines) {
       f.writestring(' '.repeat(l.length * 2))
     }
-    
+
     f.position = 0
-    
+
     for (const l of lines) {
       f.writeline(l)
     }
@@ -397,3 +410,14 @@ function getDelayCompensation (instrument, articulation) {
 function getKeySwitch (articulation) {
   return articulationNames.indexOf(articulation) || 0
 }
+
+loadArticulations.local = 1
+updateInstrumentMenu.local = 1
+updateArticulationMenu.local = 1
+setArticulationByName.local = 1
+saveFile.local = 1
+readFile.local = 1
+parseTSVData.local = 1
+getAvailableArticulations.local = 1
+getDelayCompensation.local = 1
+getKeySwitch.local = 1

@@ -12,7 +12,7 @@
    - Keep this file alongside your `.amxd` device file (same folder or one level up).
    - The current data is set up for BBC Symphony Orchestra users, sourced from [this spreadsheet](https://docs.google.com/spreadsheets/d/1WP9sobba7OkldNkTiSzXP7r3Pb64IzWQWrLkqdiyRcA/preview#gid=0).
    - The [articulations](./articulations/) folder contains experimental alternative articulation sets. Many articulations in these sets have unknown delay values (set to 0), but they can still be used for keyswitch functionality.
-   - To use multiple articulation sets from different sample libraries, create a combined `articulations.tsv` configuration file. All devices in a Live set share the configuration from the first loaded device for performance optimization.
+   - To use multiple articulation sets from different sample libraries, either create a combined articulations.tsv configuration file or place a copy of the device in its own folder with the library-specific `articulations.tsv`.
 2. Tip: Assign a hotkey to the `Show` button on the first track to quickly access articulation selection for the currently selected track.
 3. Use `No key` to disable keyswitch sending.
 4. `Play/Stop` buttons bypass delay compensation for real-time performance.

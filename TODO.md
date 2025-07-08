@@ -26,5 +26,6 @@
 - [x] make fncs private foo.local = 1
 - [x] restore all tabs on save
 - [x] ~~update disabled border for: save, key, track~~
+- [x] fix popup content with collapsed group of tracks
 - [ ] "Unable to add v8ui!" during freeze save
 - [ ] update overview and device screenshot
